@@ -73,3 +73,11 @@ const PlasmoOverlay = () => {
 }
 
 export default PlasmoOverlay
+
+// export const getOverlayAnchor: PlasmoGetOverlayAnchor = () => {
+//   const el = document.getElementById('plasmo-csui');
+//   if (el) {
+//     return el;
+//   }
+//   return document.body;
+// }
