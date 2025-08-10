@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { CodeBlock } from "./code-block";
 
 const components: Partial<Components> = {
+  // @ts-expect-error
   code: CodeBlock,
   pre: ({ children }) => <>{children}</>,
   ol: ({ node, children, ...props }) => {

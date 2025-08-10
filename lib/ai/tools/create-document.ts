@@ -1,7 +1,7 @@
 import { generateUUID } from "@/lib/utils";
 import { tool, type UIMessageStreamWriter } from "ai";
 import { z } from "zod";
-import type { Session } from "@/hooks/use-session";
+import type { Session } from "@/lib/auth";
 import {
   artifactKinds,
   documentHandlersByArtifactKind,

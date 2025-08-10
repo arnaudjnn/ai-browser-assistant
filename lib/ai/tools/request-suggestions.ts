@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { Session } from "@/hooks/use-session";
+import type { Session } from "@/lib/auth";
 import { streamObject, tool, type UIMessageStreamWriter } from "ai";
 import { getDocumentById, saveSuggestions } from "@/lib/db/queries";
 import type { Suggestion } from "@/lib/db/schema";

@@ -3,19 +3,19 @@ import {
   extractReasoningMiddleware,
   wrapLanguageModel,
 } from "ai";
-import { xai } from "@ai-sdk/xai";
+import { openai } from "@ai-sdk/openai";
 
 export const myProvider = customProvider({
   languageModels: {
-    "chat-model": xai("grok-2-vision-1212"),
+    "chat-model": openai("gpt-5"),
     "chat-model-reasoning": wrapLanguageModel({
-      model: xai("grok-3-mini-beta"),
+      model: openai("o3"),
       middleware: extractReasoningMiddleware({ tagName: "think" }),
     }),
-    "title-model": xai("grok-2-1212"),
-    "artifact-model": xai("grok-2-1212"),
+    "title-model": openai("gpt-5-mini"),
+    "artifact-model": openai("gpt-5-mini"),
   },
   imageModels: {
-    "small-model": xai.imageModel("grok-2-image"),
+    "small-model": openai.imageModel("gpt-image-1"),
   },
 });
