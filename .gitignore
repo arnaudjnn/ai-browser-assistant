@@ -9,6 +9,11 @@
 # testing
 /coverage
 
+# next.js
+.next/
+out/
+build
+
 #cache
 .turbo
 
@@ -23,7 +28,13 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# vercel
+.vercel
 
 out/
 build/

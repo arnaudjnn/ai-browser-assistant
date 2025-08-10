@@ -1,45 +1,105 @@
 {
-  "name": "dune",
-  "displayName": "Dune",
+  "name": "ai-browser-assistant",
+  "displayName": "AI Browser Assistant",
   "version": "0.0.1",
-  "description": "A basic Plasmo extension.",
-  "author": "Israel & Tosin",
   "scripts": {
-    "dev": "plasmo dev",
-    "build": "plasmo build",
-    "package": "plasmo package"
+    "start": "next start",
+    "dev": "pnpm run dev:plasmo & pnpm run dev:next",
+    "dev:plasmo": "plasmo dev",
+    "dev:next": "next dev --port 1947",
+    "build": "pnpm run build:plasmo & pnpm run build:next",
+    "build:plasmo": "plasmo build",
+    "build:next": "next build"
   },
   "dependencies": {
+    "@ai-sdk/react": "2.0.0-beta.6",
+    "@ai-sdk/xai": "2.0.0-beta.2",
+    "@biomejs/biome": "1.9.4",
+    "@codemirror/lang-javascript": "^6.2.4",
+    "@codemirror/lang-python": "^6.2.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "@codemirror/view": "^6.38.1",
     "@plasmohq/messaging": "^0.7.1",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.7",
+    "@vercel/functions": "^2.2.5",
+    "ai": "5.0.0-beta.6",
+    "bcrypt-ts": "^7.1.0",
+    "class-variance-authority": "^0.7.1",
+    "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
+    "codemirror": "^6.0.2",
+    "date-fns": "^4.1.0",
+    "diff-match-patch": "^1.0.5",
+    "dotenv": "^17.2.1",
+    "drizzle-orm": "^0.44.3",
+    "fast-deep-equal": "^3.1.3",
+    "framer-motion": "^12.23.6",
+    "lucide-react": "^0.525.0",
+    "nanoid": "^5.1.5",
+    "next": "^15.4.2",
+    "next-themes": "^0.4.6",
+    "orderedmap": "^2.1.1",
+    "papaparse": "^5.5.3",
     "plasmo": "0.90.5",
+    "postgres": "^3.4.7",
+    "prosemirror-example-setup": "^1.2.3",
+    "prosemirror-inputrules": "^1.5.0",
+    "prosemirror-markdown": "^1.13.2",
+    "prosemirror-model": "^1.25.2",
+    "prosemirror-schema-basic": "^1.2.4",
+    "prosemirror-schema-list": "^1.5.1",
+    "prosemirror-state": "^1.4.3",
+    "prosemirror-view": "^1.40.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-data-grid": "7.0.0-beta.56",
+    "react-dom": "18.2.0",
+    "react-markdown": "^10.1.0",
+    "redis": "^5.6.1",
+    "remark-gfm": "^4.0.1",
+    "resumable-stream": "^2.2.1",
+    "sonner": "^2.0.6",
+    "swr": "^2.3.4",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.1",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
-    "@radix-ui/colors": "2.1.0",
     "@types/chrome": "0.0.258",
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "postcss": "8.4.33",
     "prettier": "3.2.4",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "3.4.1",
-    "typescript": "5.3.3",
-    "windy-radix-palette": "0.6.1"
+    "typescript": "5.3.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "vfile": "5.3.7"
+    }
   },
   "manifest": {
+    "name": "AI Browser Assistant",
+    "homepage_url": "https://demo.chat-sdk.dev",
     "host_permissions": [
       "<all_urls>"
     ],
     "permissions": [
       "storage",
       "activeTab",
-      "contextMenus"
+      "contextMenus",
+      "cookies"
     ],
     "action": {
-      "default_title": "Toggle Extension"
+      "default_title": "Open assistant"
     }
-    
   }
 }
