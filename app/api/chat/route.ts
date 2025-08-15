@@ -33,6 +33,7 @@ import { after } from "next/server";
 import { ChatSDKError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import type { ChatModel } from "@/lib/ai/models";
+import { getMcpTools } from "@/lib/ai/tools/mcp";
 
 export const maxDuration = 60;
 
@@ -153,6 +154,8 @@ export async function POST(request: Request) {
     const streamId = generateUUID();
     await createStreamId({ streamId, chatId: id });
 
+    const mcpTools = await getMcpTools();
+
     const stream = createUIMessageStream({
       execute: ({ writer: dataStream }) => {
         const result = streamText({
@@ -163,9 +166,15 @@ export async function POST(request: Request) {
           experimental_activeTools:
             selectedChatModel === "chat-model-reasoning"
               ? []
-              : ["createDocument", "updateDocument", "requestSuggestions"],
+              : [
+                  ...Object.keys(mcpTools),
+                  "createDocument",
+                  "updateDocument",
+                  "requestSuggestions",
+                ],
           experimental_transform: smoothStream({ chunking: "word" }),
           tools: {
+            ...mcpTools,
             createDocument: createDocument({ session, dataStream }),
             updateDocument: updateDocument({ session, dataStream }),
             requestSuggestions: requestSuggestions({
